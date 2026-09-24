@@ -1,0 +1,24 @@
+POST http://localhost:4000/student-api/basic-info
+Content-Type: application/json
+
+{
+  "user":"6a9a5ec18602ee5fc1a2775b",
+  "skills":["python","java"],
+  "cgpa":9.22
+}
+
+
+###
+GET http://localhost:4000/student-api/info/6a9be588496f9d171ff16267
+
+###
+PATCH http://localhost:4000/student-api/update/6a9be588496f9d171ff16267
+Content-Type: application/json
+
+{
+  "user":"6a9a5ec18602ee5fc1a2775b",
+  "skills":["python","java","DataScience"],
+  "cgpa":9.10
+}
+
+

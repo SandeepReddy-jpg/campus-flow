@@ -1,0 +1,6 @@
+{
+  "name": "CampusFlow",
+  "description": "The Academic Operating System: Unifying academic, administrative, and placement workflows across an intelligent neo-brutalist platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

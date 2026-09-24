@@ -1,0 +1,20 @@
+POST http://localhost:4000/assignment-api/create
+Content-Type: application/json
+
+{
+  "subjectinfo":"6aa027ea1906a24c40558d28",
+  "teacherinfo":"6a9bfa1c33cc985db46816c8",
+  "name":"Java Assignment",
+  "descp":"complete the assignmnet of unit-1",
+  "instructions":"attempt all the questions",
+  "duedate":"12-9-2026"
+}
+
+
+###
+PATCH http://localhost:4000/assignment-api/update/6aa0387370e3ebf5d6ce6d57
+Content-Type: application/json
+
+{
+  "duedate":"20-9-2026"
+}

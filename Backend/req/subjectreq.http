@@ -1,0 +1,28 @@
+POST http://localhost:4000/subject-api/create
+Content-Type: application/json
+
+{
+  "collegeinfo":"6a9c0eb0a3c69054efee779b",
+  "deptinfo":"6a9c2560b29c8e7242a52612",
+  "courseinfo":"6aa02058b098d274bba66a3c",
+  "teacherinfo":"6a9bfa1c33cc985db46816c8",
+  "name":"Python",
+  "code":"py",
+  "credits":4,
+  "descp":"programming language"
+}
+
+###
+GET http://localhost:4000/subject-api/info/6aa027ea1906a24c40558d28
+
+
+###
+PATCH http://localhost:4000/subject-api/update/6aa027ea1906a24c40558d28
+Content-Type: application/json
+
+{
+    "name":"Java",
+  "code":"java",
+  "credits":4,
+  "descp":"programming language"
+}

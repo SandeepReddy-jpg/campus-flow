@@ -1,0 +1,27 @@
+POST http://localhost:4000/faculty-api/basic-info
+Content-Type: application/json
+
+{
+  "user": "6a9bfa1c33cc985db46816c8",
+  "collegeinfo": "6a9c0eb0a3c69054efee779b",
+  "deptinfo": "6a9c2560b29c8e7242a52612",
+  "designation": "Assistant Professor",
+  "qualifications": ["M.Tech", "Ph.D"],
+  "specialization": ["Java", "Distributed Systems"],
+  "experienceYears": 5
+}
+###
+GET  http://localhost:4000/faculty-api/info/6a9c302e2a7c44a39021e87a
+
+
+###
+PATCH http://localhost:4000/faculty-api/update/6a9c302e2a7c44a39021e87a
+Content-Type: application/json
+
+
+{
+  "designation": "Assistant Professor",
+  "qualifications": ["M.Tech", "Ph.D"],
+  "specialization": ["Java", "Distributed Systems","python"],
+  "experienceYears": 9
+}

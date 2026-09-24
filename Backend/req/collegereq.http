@@ -1,0 +1,30 @@
+POST http://localhost:4000/college-api/info
+Content-Type: application/json
+
+{
+  "name": "AnuragUniversity",
+  "code": "ANURAG",
+  "address": "Ghatkesar Main Road",
+  "contact": {
+    "phone": "21212122",
+    "email": "office@anurag.edu.in",
+    "website": "https://anurag.edu.in"
+  },
+  "desp": "Good college"
+}
+###
+PATCH  http://localhost:4000/college-api/update/6a9c0eb0a3c69054efee779b
+Content-Type: application/json
+
+{
+  "name": "AnuragUniversity",
+  "code": "ANURAG",
+  "address": "Ghatkesar Main Road",
+  "contact": {
+    "phone": "21212122",
+    "email": "office@anurag.edu.in",
+    "website": "https://anurag.edu.in"
+  },
+  "desp": "best college"
+}
+

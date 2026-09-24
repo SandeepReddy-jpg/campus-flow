@@ -1,0 +1,833 @@
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-surface: #f8fafc;
+  --color-surface-bright: #ffffff;
+  --color-surface-low: #f1f5f9;
+  --color-surface-high: #e2e8f0;
+  --color-surface-container: #f1f5f9;
+  --color-surface-highest: #e5e7eb;
+
+  --color-primary-container: #eef2ff;
+  --color-primary-fixed: #eef2ff;
+  --color-secondary: #0ea5e9;
+  --color-secondary-container: #f0f9ff;
+  --color-tertiary: #7c3aed;
+  --color-tertiary-container: #f5f3ff;
+  --color-volt: #34d399;
+  --color-brandBlack: #0f172a;
+
+  --shadow-brutal-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-brutal: 0 1px 3px rgba(15, 23, 42, 0.08), 0 6px 12px -6px rgba(15, 23, 42, 0.08);
+  --shadow-brutal-lg: 0 10px 22px -10px rgba(15, 23, 42, 0.14), 0 4px 8px -6px rgba(15, 23, 42, 0.08);
+  --shadow-brutal-xl: 0 24px 40px -20px rgba(15, 23, 42, 0.18), 0 8px 16px -8px rgba(15, 23, 42, 0.1);
+}
+
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+h1, h2, h3, h4, .font-display, .font-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.border-3 {
+  border-width: 3px;
+}
+
+.btn-brutal {
+  transition: all 0.15s ease;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  border-radius: 10px;
+}
+.btn-brutal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px -8px rgba(15, 23, 42, 0.14);
+}
+.btn-brutal:active {
+  transform: translateY(0px);
+  box-shadow: 0 0px 0px #111111;
+}
+
+.card-brutal {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  border-radius: 16px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-brutal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 26px -12px rgba(15, 23, 42, 0.16);
+}
+
+.brutal-tag {
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  font-family: 'Space Grotesk', sans-serif;
+  border-radius: 9999px;
+}
+
+.racing-stripe {
+  background: repeating-linear-gradient(
+    -45deg,
+    #4f46e5,
+    #4f46e5 12px,
+    #c7d2fe 12px,
+    #c7d2fe 24px
+  );
+}
+
+/* ==========================================================================
+   KEYBOARD ACCESSIBILITY & VISIBLE FOCUS INDICATORS
+   High-contrast, clearly visible indicators for keyboard-only navigation
+   ========================================================================== */
+:focus-visible {
+  outline: 3px solid #4f46e5 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 2px #ffffff !important;
+  transition: outline-offset 0.1s ease !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #4f46e5 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 2px #ffffff !important;
+}
+
+/* High contrast indicators on dark / volt / accent surfaces */
+.bg-brandBlack button:focus-visible,
+.bg-brandBlack a:focus-visible,
+.bg-[#111111] button:focus-visible,
+.bg-[#111111] a:focus-visible,
+.bg-volt button:focus-visible,
+.bg-volt a:focus-visible,
+.bg-[#ffcc00] button:focus-visible,
+.bg-[#ffcc00] a:focus-visible {
+  outline: 3px solid #4f46e5 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 5px #111111 !important;
+}
+
+/* ==========================================================================
+   QUICK TOUR SPOTLIGHT HIGHLIGHT
+   ========================================================================== */
+.tour-target-highlight {
+  position: relative !important;
+  z-index: 45 !important;
+  outline: 4px solid #4f46e5 !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 4px #34d399, 0 10px 30px rgba(79, 70, 229, 0.25) !important;
+  transition: all 0.25s ease-in-out !important;
+  animation: tour-pulse 2s infinite ease-in-out !important;
+}
+
+@keyframes tour-pulse {
+  0%, 100% {
+    outline-color: #4f46e5;
+  }
+  50% {
+    outline-color: #34d399;
+  }
+}
+
+.theme-minimalist .tour-target-highlight {
+  outline: 3px solid #2563eb !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+  animation: none !important;
+}
+
+/* ==========================================================================
+   ROLE HOVER ANIMATIONS
+   Tactile, smooth neo-brutalist hover transitions for role cards & elements
+   ========================================================================== */
+.role-card-animated {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease,
+              background-color 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.role-card-animated:hover {
+  transform: translate(-4px, -4px) !important;
+  box-shadow: 8px 8px 0px #111111 !important;
+}
+
+.theme-dark .role-card-animated:hover,
+.dark .role-card-animated:hover {
+  box-shadow: 8px 8px 0px #000000 !important;
+  border-color: #d4ff00 !important;
+}
+
+.role-card-animated .role-card-icon {
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.role-card-animated:hover .role-card-icon {
+  transform: rotate(7deg) scale(1.12);
+}
+
+.role-card-animated .role-card-arrow {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.role-card-animated:hover .role-card-arrow {
+  transform: translateX(6px);
+}
+
+.role-pill-animated {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.role-pill-animated:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px #111111;
+}
+
+.theme-dark .role-pill-animated:hover,
+.dark .role-pill-animated:hover {
+  box-shadow: 3px 3px 0px #000000;
+}
+
+/* ==========================================================================
+   NEO-BRUTALIST DARK MODE STYLING
+   High-contrast, dark canvas with crisp borders, volt accents & deep surfaces
+   ========================================================================== */
+.theme-dark,
+.dark {
+  background-color: #0f1013 !important;
+  color: #f4f4f5 !important;
+}
+
+.theme-dark body,
+.dark body {
+  background-color: #0f1013 !important;
+  color: #f4f4f5 !important;
+  background-image: radial-gradient(#2d313c 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+}
+
+/* Dark Surface Color Overrides */
+.theme-dark .bg-surface,
+.dark .bg-surface {
+  background-color: #0f1013 !important;
+}
+
+.theme-dark .bg-surface-bright,
+.dark .bg-surface-bright {
+  background-color: #17181f !important;
+}
+
+.theme-dark .bg-surface-low,
+.dark .bg-surface-low {
+  background-color: #14151b !important;
+}
+
+.theme-dark .bg-surface-high,
+.dark .bg-surface-high {
+  background-color: #1e2029 !important;
+}
+
+.theme-dark .bg-surface-container,
+.dark .bg-surface-container {
+  background-color: #14151a !important;
+}
+
+.theme-dark .bg-surface-highest,
+.dark .bg-surface-highest {
+  background-color: #242732 !important;
+}
+
+/* Dark Mode Cards */
+.theme-dark .card-brutal,
+.dark .card-brutal {
+  background: #181920 !important;
+  border-color: #363a45 !important;
+  box-shadow: 5px 5px 0px #000000 !important;
+  color: #f4f4f5 !important;
+}
+
+.theme-dark .card-brutal:hover,
+.dark .card-brutal:hover {
+  border-color: #4b5262 !important;
+  box-shadow: 8px 8px 0px #000000 !important;
+}
+
+/* Dark Mode Buttons */
+.theme-dark .btn-brutal,
+.dark .btn-brutal {
+  border-color: #363a45 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+
+.theme-dark .btn-brutal:hover,
+.dark .btn-brutal:hover {
+  box-shadow: 2px 2px 0px #000000 !important;
+}
+
+.theme-dark .btn-brutal:active,
+.dark .btn-brutal:active {
+  box-shadow: 0px 0px 0px #000000 !important;
+}
+
+/* High Contrast Dark Borders and Text */
+.theme-dark .border-brandBlack,
+.dark .border-brandBlack {
+  border-color: #363a45 !important;
+}
+
+.theme-dark .border-b-3.border-brandBlack,
+.dark .border-b-3.border-brandBlack,
+.theme-dark .border-t-3.border-brandBlack,
+.dark .border-t-3.border-brandBlack {
+  border-color: #2d313c !important;
+}
+
+.theme-dark .text-brandBlack,
+.dark .text-brandBlack {
+  color: #f4f4f5 !important;
+}
+
+.theme-dark .text-slate-700,
+.dark .text-slate-700,
+.theme-dark .text-slate-600,
+.dark .text-slate-600 {
+  color: #a1a1aa !important;
+}
+
+.theme-dark .text-slate-500,
+.dark .text-slate-500 {
+  color: #71717a !important;
+}
+
+/* Dark Mode Header & Navbars */
+.theme-dark header,
+.dark header {
+  background-color: rgba(15, 16, 19, 0.95) !important;
+  border-color: #2d313c !important;
+}
+
+.theme-dark nav,
+.dark nav {
+  border-color: #2d313c !important;
+}
+
+.theme-dark .bg-[#faf7f2]\/95,
+.dark .bg-[#faf7f2]\/95 {
+  background-color: rgba(15, 16, 19, 0.95) !important;
+}
+
+.theme-dark .bg-[#f2ede5],
+.dark .bg-[#f2ede5] {
+  background-color: #15161c !important;
+}
+
+.theme-dark .bg-[#eee9e0],
+.dark .bg-[#eee9e0] {
+  background-color: #1a1b22 !important;
+}
+
+/* Dark Mode Form Controls */
+.theme-dark input,
+.dark input,
+.theme-dark textarea,
+.dark textarea,
+.theme-dark select,
+.dark select {
+  background-color: #121318 !important;
+  color: #f4f4f5 !important;
+  border-color: #363a45 !important;
+}
+
+.theme-dark input::placeholder,
+.dark input::placeholder,
+.theme-dark textarea::placeholder,
+.dark textarea::placeholder {
+  color: #71717a !important;
+}
+
+/* Keep Accent Buttons Visible & Punchy in Dark Mode */
+.theme-dark .bg-volt,
+.dark .bg-volt {
+  background-color: #34d399 !important;
+  color: #0f172a !important;
+}
+
+.theme-dark .bg-[#d4ff00],
+.dark .bg-[#d4ff00] {
+  background-color: #34d399 !important;
+}
+
+.theme-dark .bg-volt .text-brandBlack,
+.dark .bg-volt .text-brandBlack,
+.theme-dark .bg-[#d4ff00] .text-brandBlack,
+.dark .bg-[#d4ff00] .text-brandBlack,
+.theme-dark .bg-[#ffcc00] .text-brandBlack,
+.dark .bg-[#ffcc00] .text-brandBlack {
+  color: #0f172a !important;
+}
+
+.theme-dark .bg-primary-container,
+.dark .bg-primary-container,
+.theme-dark .bg-primary-fixed,
+.dark .bg-primary-fixed {
+  background-color: #312e81 !important;
+  color: #e0e7ff !important;
+}
+
+.theme-dark .bg-secondary-container,
+.dark .bg-secondary-container {
+  background-color: #164e63 !important;
+  color: #bae6fd !important;
+}
+
+.theme-dark .bg-tertiary-container,
+.dark .bg-tertiary-container {
+  background-color: #4c1d95 !important;
+  color: #ddd6fe !important;
+}
+
+.theme-dark .bg-[#faf7f2],
+.dark .bg-[#faf7f2] {
+  background-color: #17181f !important;
+}
+
+.theme-dark .bg-[#f5f0e8],
+.dark .bg-[#f5f0e8],
+.theme-dark .bg-[#f2ede5],
+.dark .bg-[#f2ede5] {
+  background-color: #15161c !important;
+}
+
+.theme-dark .bg-[#eee9e0],
+.dark .bg-[#eee9e0] {
+  background-color: #1a1b22 !important;
+}
+
+.theme-dark .bg-[#e8e3da],
+.dark .bg-[#e8e3da] {
+  background-color: #242732 !important;
+}
+
+.theme-dark .bg-[#ffcc00],
+.dark .bg-[#ffcc00] {
+  background-color: #4338ca !important;
+  color: #ffffff !important;
+}
+
+.theme-dark .shadow-brutal-sm,
+.dark .shadow-brutal-sm,
+.theme-dark .shadow-brutal-xs,
+.dark .shadow-brutal-xs {
+  box-shadow: 2px 2px 0px #000000 !important;
+}
+
+.theme-dark .shadow-brutal,
+.dark .shadow-brutal {
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+
+.theme-dark .shadow-brutal-lg,
+.dark .shadow-brutal-lg {
+  box-shadow: 6px 6px 0px #000000 !important;
+}
+
+.theme-dark .shadow-brutal-xl,
+.dark .shadow-brutal-xl {
+  box-shadow: 8px 8px 0px #000000 !important;
+}
+
+/* Dark Mode Modal Overlay & Dialogs */
+.theme-dark [role="dialog"],
+.dark [role="dialog"] {
+  background-color: #16171e !important;
+  border-color: #3f4452 !important;
+}
+
+/* ==========================================================================
+   PRINT-SPECIFIC STYLES & REFORMATTED DOCUMENT LAYOUT
+   ========================================================================== */
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 12mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide interactive, floating, and promotional UI elements */
+  nav,
+  header,
+  footer,
+  #screen-nav-menu,
+  #features,
+  #how-it-works,
+  #testimonials,
+  #cta-section,
+  .no-print,
+  button,
+  input,
+  [role="dialog"],
+  .toast-container,
+  #navbar-search-btn,
+  #navbar-print-documentation-btn,
+  #navbar-save-pdf-btn,
+  #quick-actions-floating-container,
+  #quick-actions-menu-popover,
+  #quick-actions-modal,
+  #login-button,
+  #request-demo-top-btn {
+    display: none !important;
+  }
+
+  /* Show Print Only Elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Reformat Full Screen Role View container for documentation export */
+  #fullscreen-role-container {
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  #fullscreen-role-container .max-w-7xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Reformat Role Dashboards container into an executive report format */
+  #dashboards {
+    background: #ffffff !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  #dashboards .max-w-7xl {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Document layout for the 4 role cards */
+  #dashboards .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16pt !important;
+    page-break-inside: auto;
+  }
+
+  /* Individual Role Cards */
+  .card-brutal {
+    background: #ffffff !important;
+    border: 1.5pt solid #222222 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    border-radius: 4px !important;
+    padding: 12pt !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 12pt !important;
+  }
+
+  /* Preserve color highlights in badges and indicators */
+  .bg-primary-container {
+    background-color: #fff2b2 !important;
+    color: #000000 !important;
+  }
+  .bg-secondary-container {
+    background-color: #ffdcd6 !important;
+    color: #000000 !important;
+  }
+  .bg-tertiary-container {
+    background-color: #dce7ff !important;
+    color: #000000 !important;
+  }
+  .bg-volt {
+    background-color: #e4ff66 !important;
+    color: #000000 !important;
+  }
+
+  /* Clean headings and text */
+  h1, h2, h3, h4 {
+    color: #000000 !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Links become plain text with destination */
+  a {
+    text-decoration: none !important;
+    color: #000000 !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN MODERN INDIGO THEME — LIGHT MODE
+   Visual-only overrides (no content changes). Applies when the light theme
+   is active (html has `.light` / `.theme-light` and no `.dark` class).
+   ========================================================================== */
+
+/* --- Soft UI: borders, radii, focus rings --- */
+.border-brandBlack {
+  border-color: #e2e8f0 !important;
+}
+.hover\:border-brandBlack:hover {
+  border-color: #cbd5e1 !important;
+}
+.ring-brandBlack {
+  --tw-ring-color: #6366f1 !important;
+}
+
+.border-2,
+.border-3,
+.border-4,
+.border-t-2,
+.border-t-3,
+.border-t-4,
+.border-b-2,
+.border-b-3,
+.border-b-4,
+.border-l-2,
+.border-l-3,
+.border-l-4,
+.border-r-2,
+.border-r-3,
+.border-r-4,
+.border-y-2,
+.border-y-3,
+.border-x-2,
+.border-x-3 {
+  border-width: 1px !important;
+}
+
+button,
+input,
+select,
+textarea,
+[role="dialog"] {
+  border-radius: 10px !important;
+}
+
+[class*="border-2"][class*="border-brandBlack"],
+[class*="border-3"][class*="border-brandBlack"],
+[class*="border-4"][class*="border-brandBlack"] {
+  border-radius: 10px !important;
+}
+
+/* --- Motion: lighter, lift-up hovers --- */
+.theme-light .role-card-animated:hover,
+.light .role-card-animated:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 30px -14px rgba(15, 23, 42, 0.18) !important;
+  border-color: #cbd5e1 !important;
+}
+
+.theme-light .role-pill-animated:hover,
+.light .role-pill-animated:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px -6px rgba(15, 23, 42, 0.12);
+}
+
+/* --- Hardcoded hex color remaps (light mode only) --- */
+.theme-light .bg-[#faf7f2],
+.light .bg-[#faf7f2] {
+  background-color: #f8fafc !important;
+}
+.theme-light .bg-[#faf7f2]\/95,
+.light .bg-[#faf7f2]\/95 {
+  background-color: rgba(248, 250, 252, 0.95) !important;
+}
+.theme-light .hover\:bg-[#faf7f2]:hover,
+.light .hover\:bg-[#faf7f2]:hover {
+  background-color: #f1f5f9 !important;
+}
+.theme-light .bg-[#f5f0e8],
+.light .bg-[#f5f0e8],
+.theme-light .bg-[#f2ede5],
+.light .bg-[#f2ede5] {
+  background-color: #f1f5f9 !important;
+}
+.theme-light .bg-[#eee9e0],
+.light .bg-[#eee9e0] {
+  background-color: #e2e8f0 !important;
+}
+.theme-light .hover\:bg-[#eee9e0]:hover,
+.light .hover\:bg-[#eee9e0]:hover {
+  background-color: #f1f5f9 !important;
+}
+.theme-light .bg-[#e8e3da],
+.light .bg-[#e8e3da] {
+  background-color: #e2e8f0 !important;
+}
+.theme-light .hover\:bg-[#e8e3da]:hover,
+.light .hover\:bg-[#e8e3da]:hover {
+  background-color: #e2e8f0 !important;
+}
+.theme-light .bg-[#fff9e6],
+.light .bg-[#fff9e6] {
+  background-color: #eef2ff !important;
+}
+.theme-light .hover\:bg-[#fff9e6]:hover,
+.light .hover\:bg-[#fff9e6]:hover {
+  background-color: #e0e7ff !important;
+}
+.theme-light .bg-[#fffef5],
+.light .bg-[#fffef5],
+.theme-light .bg-[#fffef8],
+.light .bg-[#fffef8] {
+  background-color: #ffffff !important;
+}
+.theme-light .bg-[#fff7ed],
+.light .bg-[#fff7ed] {
+  background-color: #f8fafc !important;
+}
+
+/* --- Indigo primary (was yellow #ffcc00) --- */
+.theme-light .bg-[#ffcc00],
+.light .bg-[#ffcc00] {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+.theme-light .bg-[#ffcc00] .text-brandBlack,
+.light .bg-[#ffcc00] .text-brandBlack,
+.theme-light .bg-[#ffcc00].text-brandBlack,
+.light .bg-[#ffcc00].text-brandBlack {
+  color: #ffffff !important;
+}
+.theme-light .hover\:bg-[#ffcc00]:hover,
+.light .hover\:bg-[#ffcc00]:hover {
+  background-color: #4338ca !important;
+}
+.theme-light .hover\:bg-[#ffcc00]:hover .text-brandBlack,
+.light .hover\:bg-[#ffcc00]:hover .text-brandBlack {
+  color: #ffffff !important;
+}
+.theme-light .group:hover .group-hover\:bg-[#ffcc00],
+.light .group:hover .group-hover\:bg-[#ffcc00] {
+  background-color: #4f46e5 !important;
+}
+.theme-light .selection\:bg-[#ffcc00]::selection,
+.light .selection\:bg-[#ffcc00]::selection {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+.theme-light .text-[#ffcc00],
+.light .text-[#ffcc00] {
+  color: #a5b4fc !important;
+}
+
+/* --- Emerald (was volt #d4ff00) --- */
+.theme-light .hover\:bg-[#d4ff00]:hover,
+.light .hover\:bg-[#d4ff00]:hover,
+.theme-light .group:hover .group-hover\:bg-[#d4ff00],
+.light .group:hover .group-hover\:bg-[#d4ff00] {
+  background-color: #34d399 !important;
+}
+.theme-light .text-[#d4ff00],
+.light .text-[#d4ff00] {
+  color: #34d399 !important;
+}
+
+/* --- Sky secondary (was red #e63b2e) --- */
+.theme-light .bg-[#e63b2e],
+.light .bg-[#e63b2e] {
+  background-color: #0ea5e9 !important;
+  color: #ffffff !important;
+}
+.theme-light .hover\:bg-[#e63b2e]:hover,
+.light .hover\:bg-[#e63b2e]:hover {
+  background-color: #0284c7 !important;
+}
+.theme-light .text-[#e63b2e],
+.light .text-[#e63b2e] {
+  color: #0284c7 !important;
+}
+.theme-light .hover\:text-[#e63b2e]:hover,
+.light .hover\:text-[#e63b2e]:hover {
+  color: #0369a1 !important;
+}
+
+/* --- Violet tertiary (was blue #0055ff) --- */
+.theme-light .bg-[#0055ff],
+.light .bg-[#0055ff] {
+  background-color: #7c3aed !important;
+  color: #ffffff !important;
+}
+.theme-light .text-[#0055ff],
+.light .text-[#0055ff] {
+  color: #7c3aed !important;
+}
+.theme-light .hover\:text-[#0055ff]:hover,
+.light .hover\:text-[#0055ff]:hover,
+.theme-light .group:hover .group-hover\:text-[#0055ff],
+.light .group:hover .group-hover\:text-[#0055ff] {
+  color: #6d28d9 !important;
+}
+
+/* --- Containers (light tints) --- */
+.theme-light .bg-[#d6e3ff],
+.light .bg-[#d6e3ff] {
+  background-color: #ede9fe !important;
+}
+.theme-light .hover\:bg-[#d6e3ff]:hover,
+.light .hover\:bg-[#d6e3ff]:hover {
+  background-color: #ddd6fe !important;
+}
+.theme-light .bg-[#ffdad6],
+.light .bg-[#ffdad6] {
+  background-color: #e0f2fe !important;
+}
+.theme-light .hover\:bg-[#ffdad6]:hover,
+.light .hover\:bg-[#ffdad6]:hover {
+  background-color: #bae6fd !important;
+}
+
+/* --- Near-black surfaces & text stay deep slate --- */
+.theme-light .bg-[#111111],
+.light .bg-[#111111],
+.theme-light .hover\:bg-brandBlack:hover,
+.light .hover\:bg-brandBlack:hover {
+  background-color: #0f172a !important;
+}
+.theme-light .text-[#111111],
+.light .text-[#111111] {
+  color: #0f172a !important;
+}
+.theme-light .group:hover .group-hover\:bg-brandBlack,
+.light .group:hover .group-hover\:bg-brandBlack {
+  background-color: #0f172a !important;
+}
+

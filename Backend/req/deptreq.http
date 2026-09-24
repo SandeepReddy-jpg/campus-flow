@@ -1,0 +1,24 @@
+POST http://localhost:4000/dept-api/create
+Content-Type: application/json
+
+{
+  "collegeinfo":"6a9c0eb0a3c69054efee779b",
+  "name":"DataScience",
+  "code":"DS",
+  "hodid":"6a9a5ec18602ee5fc1a2775b",
+  "descp":"good"
+}
+###
+POST http://localhost:4000/dept-api/update/6a9c2560b29c8e7242a52612
+Content-Type: application/json
+
+{
+  "collegeinfo":"6a9c0eb0a3c69054efee779b",
+  "name":"DataScience",
+  "code":"DS",
+  "hodid":"6a9a5ec18602ee5fc1a2775b",
+  "descp":"ok"
+}
+
+###
+GET http://localhost:4000/dept-api/info/6a9c2560b29c8e7242a52612
